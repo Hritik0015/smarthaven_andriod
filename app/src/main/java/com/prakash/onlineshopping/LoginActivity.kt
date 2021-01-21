@@ -7,7 +7,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 
-class LoginActivity : AppCompatActivity()  {
+class LoginActivity : AppCompatActivity() ,View.OnClickListener{
     private lateinit var username: EditText
     private lateinit var password: EditText
     private lateinit var login: Button
@@ -22,8 +22,21 @@ class LoginActivity : AppCompatActivity()  {
         login = findViewById(R.id.login)
         signUp = findViewById(R.id.signUp)
 
+        signUp.setOnClickListener(this)
+
 
     }
 
-}
 
+    override fun onClick(v: View?) {
+        when (v?.id) {
+            R.id.signUp -> {
+                val intent = Intent(this, SignUp::class.java)
+                startActivity(intent)
+            }
+        }
+    }
+
+
+
+}
