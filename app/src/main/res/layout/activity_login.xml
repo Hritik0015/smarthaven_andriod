@@ -1,72 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#7ecfd4"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".ui.LoginActivity"
+    android:id="@+id/linear">
 
+    <ImageView
+        android:layout_width="178dp"
+        android:layout_height="166dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/logosoftwarica" />
 
-    <EditText
-        android:id="@+id/username"
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Username"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="420dp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp"
+        android:layout_height="wrap_content">
 
-        />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etUsername"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@color/white"
+            android:hint="Username"
+            android:textSize="15sp" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
-        android:id="@+id/password"
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:hint="Password"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        android:textSize="25sp"
-        android:inputType="textPassword"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/username"
-        app:layout_constraintVertical_bias="0.037"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp" />
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etPassword"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@color/white"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:textSize="15sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <CheckBox
+        android:layout_margin="10dp"
+        android:layout_gravity="left"
+        android:id="@+id/chkRememberMe"
+        android:text="Remember Username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
     <Button
-        android:id="@+id/login"
-        android:layout_width="200dp"
+        android:id="@+id/btnLogin"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/white"
-        android:text="Log In"
-        android:textColor="@color/black"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password"
-        app:layout_constraintVertical_bias="0.323"
-        tools:ignore="MissingConstraints" />
+        android:layout_margin="10dp"
+        android:background="@drawable/roundedbutton"
+        android:text="Login"
+        android:textColor="#FFFFFF" />
 
-    <Button
-        android:id="@+id/signUp"
-        android:layout_width="200dp"
+    <TextView
+        android:textSize="15sp"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:id="@+id/tvRegister"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/white"
-        android:text="Register now"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login"
-        app:layout_constraintVertical_bias="0.323"
-        tools:ignore="MissingConstraints" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:text="@string/registeruser" />
+</LinearLayout>
