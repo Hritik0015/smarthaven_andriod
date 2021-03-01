@@ -1,6 +1,7 @@
 package com.prakash.onlineshopping.api
 
 import com.prakash.onlineshopping.entity.Product
+import com.prakash.onlineshopping.response.AddProductResponse
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.Header
