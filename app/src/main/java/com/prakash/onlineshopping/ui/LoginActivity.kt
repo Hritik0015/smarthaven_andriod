@@ -20,20 +20,20 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.io.IOException
 
+
 class LoginActivity : AppCompatActivity() {
-
-
     private val permissions = arrayOf(
-        android.Manifest.permission.CAMERA,
-        android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
-        android.Manifest.permission.ACCESS_FINE_LOCATION
+            android.Manifest.permission.CAMERA,
+            android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            android.Manifest.permission.ACCESS_FINE_LOCATION
     )
     private lateinit var etUsername: TextInputEditText
     private lateinit var etPassword: TextInputEditText
     private lateinit var tvRegister: TextView
     private lateinit var btnLogin: Button
     private lateinit var chkRememberMe: CheckBox
-    private lateinit var linear: LinearLayout
+    private lateinit var linearLayout: LinearLayout
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -42,7 +42,8 @@ class LoginActivity : AppCompatActivity() {
         btnLogin = findViewById(R.id.btnLogin)
         tvRegister = findViewById(R.id.tvRegister)
         chkRememberMe = findViewById(R.id.chkRememberMe)
-        linear = findViewById(R.id.linear)
+        linearLayout = findViewById(R.id.linearLayout)
+
         checkRunTimePermission()
 
         btnLogin.setOnClickListener {
@@ -50,7 +51,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         tvRegister.setOnClickListener {
-            startActivity(Intent(this@LoginActivity, RegisterActivity::class.java))
+            startActivity(Intent(this@LoginActivity, SignupActivity::class.java))
         }
     }
 
@@ -64,9 +65,9 @@ class LoginActivity : AppCompatActivity() {
         var hasPermission = true
         for (permission in permissions) {
             if (ActivityCompat.checkSelfPermission(
-                    this,
-                    permission
-                ) != PackageManager.PERMISSION_GRANTED
+                            this,
+                            permission
+                    ) != PackageManager.PERMISSION_GRANTED
             ) {
                 hasPermission = false
                 break
@@ -88,23 +89,30 @@ class LoginActivity : AppCompatActivity() {
                 val response = repository.checkUser(username, password)
                 if (response.success == true) {
 
-                    ServiceBuilder.token="Bearer ${response.token}"
+                    ServiceBuilder.token = "Bearer ${response.token}"
+
                     saveUsernamePassword()
+
+                    withContext(Dispatchers.Main) {
+                        Toast.makeText(this@LoginActivity, "Login success", Toast.LENGTH_SHORT)
+                                .show()
+                    }
                     startActivity(
-                        Intent(
-                            this@LoginActivity,
-                            Dashboard::class.java
-                        )
+                            Intent(
+                                    this@LoginActivity,
+                                    DashboardActivity::class.java
+                            )
                     )
                     finish()
-                } else {
+                }
+                else {
                     withContext(Dispatchers.Main) {
                         val snack =
-                            Snackbar.make(
-                                linear,
-                                "Invalid credentials",
-                                Snackbar.LENGTH_LONG
-                            )
+                                Snackbar.make(
+                                        linearLayout,
+                                        "Invalid credentials",
+                                        Snackbar.LENGTH_LONG
+                                )
                         snack.setAction("OK", View.OnClickListener {
                             snack.dismiss()
                         })
@@ -114,14 +122,15 @@ class LoginActivity : AppCompatActivity() {
             } catch (ex: IOException) {
                 withContext(Dispatchers.Main) {
                     Toast.makeText(
-                        this@LoginActivity,
-                        ex.toString(),
-                        Toast.LENGTH_SHORT
+                            this@LoginActivity,
+                            ex.toString(),
+                            Toast.LENGTH_SHORT
                     ).show()
                 }
             }
         }
     }
+
     private fun saveUsernamePassword() {
         val username = etUsername.text.toString()
         val password = etPassword.text.toString()
@@ -132,3 +141,4 @@ class LoginActivity : AppCompatActivity() {
         editor.apply()
     }
 }
+
