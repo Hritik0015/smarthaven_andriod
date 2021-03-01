@@ -9,7 +9,7 @@ import com.prakash.onlineshopping.response.LoginResponse
 
 class UserRepository : MyAPIRequest() {
     val myAPI =
-        ServiceBuilder.buildService(UserAPI::class.java)
+            ServiceBuilder.buildService(UserAPI::class.java)
 
     suspend fun registerUser(user: User): LoginResponse {
         return apiRequest {
