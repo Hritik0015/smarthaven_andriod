@@ -9,20 +9,16 @@ import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST
 
 interface UserAPI {
-
-
-    interface UserAPI {
-        //Register user
-        @POST("auth/register")
-        suspend fun registerUser(
+    @POST("insert")
+    suspend fun registerUser(
             @Body user: User
-        ): Response<LoginResponse>
+    ):Response<LoginResponse>
 
-        @FormUrlEncoded
-        @POST("auth/login")
-        suspend fun checkUser(
-            @Field("username") username:String,
-            @Field("password") password:String
-        ): Response<LoginResponse>
-    }
+    @FormUrlEncoded
+    @POST("user/login")
+    suspend fun checkUser(
+            @Field("username") username: String,
+            @Field("password") password: String
+    ):Response<LoginResponse>
+
 }
