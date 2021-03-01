@@ -6,14 +6,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".ui.LoginActivity"
-    android:id="@+id/linear">
+    android:id="@+id/linearLayout"
+    tools:context=".ui.LoginActivity">
 
-    <ImageView
-        android:layout_width="178dp"
-        android:layout_height="166dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/logosoftwarica" />
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
