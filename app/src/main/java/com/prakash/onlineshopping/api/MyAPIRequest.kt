@@ -14,7 +14,7 @@ abstract class MyAPIRequest {
             return response.body()!!
         } else {
             //   val error: String = response.errorBody().toString()
-            val error = response.errorBody()?.string()
+            val error = response.errorBody()?.toString()
             val message = StringBuilder()
             error?.let {
                 try {
@@ -27,6 +27,4 @@ abstract class MyAPIRequest {
             throw IOException(message.toString())
         }
     }
-
-    abstract fun uploadImage(studentId: String, body: MultipartBody.Part): Any
 }
