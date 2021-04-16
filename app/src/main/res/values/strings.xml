@@ -1,3 +1,6 @@
 <resources>
-    <string name="app_name">OnlineShopping</string>
+    <string name="app_name">FinalAssignment</string>
+    <string name="registeruser">No account ?<u>signup here</u>.</string>
+    <string name="browse_gallery">Browse Gallery</string>
+    <string name="open_camera">Open Camera</string>
 </resources>

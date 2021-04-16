@@ -7,16 +7,16 @@
     tools:context=".ui.SignupActivity"
     android:background="@color/black">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-black"
-        android:gravity="center"
-        android:text="User Details"
-        android:textColor="@color/white"
-        android:textSize="30sp"
-        tools:ignore="MissingConstraints" />
+   <TextView
+    android:id="@+id/textView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fontFamily="sans-serif-black"
+    android:gravity="center"
+    android:text="User Details"
+    android:textColor="@color/white"
+    android:textSize="30sp"
+    tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/etlname"
@@ -112,23 +112,23 @@
         android:textColorHint="@color/white"
         android:inputType="textPassword"/>
 
-    <Button
-        android:id="@+id/btnsignup"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="27dp"
-        android:backgroundTint="@android:color/darker_gray"
-        android:fontFamily="sans-serif-black"
-        android:shadowRadius="@android:integer/config_longAnimTime"
-        android:text="Sign Up"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etusername"
-        app:layout_constraintVertical_bias="0.772"
-        tools:ignore="MissingConstraints" />
+ <Button
+     android:id="@+id/btnsignup"
+     android:layout_width="200dp"
+     android:layout_height="50dp"
+     android:layout_marginTop="27dp"
+     android:backgroundTint="@android:color/darker_gray"
+     android:fontFamily="sans-serif-black"
+     android:shadowRadius="@android:integer/config_longAnimTime"
+     android:text="Sign Up"
+     android:textColor="@color/black"
+     android:textSize="20sp"
+     app:layout_constraintBottom_toBottomOf="parent"
+     app:layout_constraintEnd_toEndOf="parent"
+     app:layout_constraintHorizontal_bias="0.497"
+     app:layout_constraintStart_toStartOf="parent"
+     app:layout_constraintTop_toBottomOf="@+id/etusername"
+     app:layout_constraintVertical_bias="0.772"
+     tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
