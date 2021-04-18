@@ -1,6 +1,5 @@
 <resources>
-    <string name="app_name">FinalAssignment</string>
-    <string name="registeruser">No account ?<u>signup here</u>.</string>
-    <string name="browse_gallery">Browse Gallery</string>
-    <string name="open_camera">Open Camera</string>
+    <string name="app_name">Adopt.Dont_Shop</string>
+    <string name="title_activity_dashboard">MainActivity</string>
+    <!-- TODO: Remove or change this placeholder text -->
 </resources>
