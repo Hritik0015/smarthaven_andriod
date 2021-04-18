@@ -6,7 +6,7 @@
     android:id="@+id/dashcontainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#465FE1"
+    android:background="#FFA500"
     >
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

@@ -1,8 +1,18 @@
 package com.prakash.CamMandu
 
+import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
+import android.graphics.Color
+import android.hardware.Sensor
+import android.hardware.SensorEvent
+import android.hardware.SensorEventListener
+import android.hardware.SensorManager
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.VibrationEffect
+import android.os.Vibrator
 import android.util.Log
 import android.view.View
 import android.widget.*
@@ -14,12 +24,20 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class MainActivity : AppCompatActivity() {
-    private lateinit var etEmail : EditText
-    private lateinit var etPassword : EditText
-    private lateinit var tvSignup : TextView
-    private lateinit var btnLogin : Button
-    private lateinit var linearLayout : LinearLayout
+class MainActivity : AppCompatActivity(), SensorEventListener {
+    private lateinit var etEmail: EditText
+    private lateinit var etPassword: EditText
+    private lateinit var tvSignup: TextView
+    private lateinit var btnLogin: Button
+    private lateinit var linearLayout: LinearLayout
+    private lateinit var sensorManager: SensorManager
+    private var sensor: Sensor? = null
+
+    companion object {
+        var useremail = "";
+        var username = "";
+        var contact = "";
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,17 +48,22 @@ class MainActivity : AppCompatActivity() {
         btnLogin = findViewById(R.id.btnLogin)
         tvSignup = findViewById(R.id.tvsignup)
         linearLayout = findViewById(R.id.linearLayout)
-
-
-        btnLogin.setOnClickListener{
-            login()
-
+        sensorManager = getSystemService(SENSOR_SERVICE) as SensorManager
+        if (!checkSensor())
+            return
+        else {
+            sensor = sensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY)
+            sensorManager.registerListener(this, sensor, SensorManager.SENSOR_DELAY_NORMAL)
         }
 
-        tvSignup.setOnClickListener{
+        btnLogin.setOnClickListener {
+            login()
+        }
+        tvSignup.setOnClickListener {
             startActivity(Intent(this@MainActivity, RegisterActivity::class.java))
         }
     }
+
     private fun login() {
         val user_email = etEmail.text.toString()
         val user_password = etPassword.text.toString()
@@ -62,7 +85,6 @@ class MainActivity : AppCompatActivity() {
 //            }
 //        }
         Log.d("username pass", "$user_email -- $user_password")
-
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 val repository = UserRepository()
@@ -71,9 +93,14 @@ class MainActivity : AppCompatActivity() {
 //                Log.d("response","$a")
                 if (response.success == true) {
                     withContext(Dispatchers.Main) {
-                    // dashboard khola
-                    ServiceBuilder.token = "Bearer ${response.token}"
-                    saveSharedPref(response.token!!)
+                        // dashboard khola
+                        ServiceBuilder.token = "Bearer ${response.token}"
+                        saveSharedPref(response.token!!)
+                        if (response.data != null) {
+                            useremail = response.data.user_email.toString();
+                            contact = response.data.user_contactno.toString();
+                            username = response.data.user_username.toString();
+                        }
                         Log.d("Data", "onBindViewHolder: " + response.data)
 //                    val name = response.userData!!
 //                    val email = response.userData.user_email
@@ -85,12 +112,13 @@ class MainActivity : AppCompatActivity() {
 //                    editor.putString("contactno", contactno)
 //                    editor.apply()
 //                    editor.commit()
-                    startActivity(
-                        Intent(
-                            this@MainActivity,
-                            DashboardActivity::class.java
+                        startActivity(
+                            Intent(
+                                this@MainActivity,
+                                DashboardActivity::class.java
+                            )
                         )
-                    )}
+                    }
                     finish()
                 } else {
                     withContext(Dispatchers.Main) {
@@ -116,9 +144,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-
     }
-
 //    private fun saveSharedPref() {
 //        val email = etEmail.text.toString()
 //        val password = etPassword.text.toString()
@@ -129,7 +155,6 @@ class MainActivity : AppCompatActivity() {
 //        editor.putString("password", password)
 //        editor.apply()
 //    }
-
 //    private fun getSharedPref() {
 //        val sharedPref = getSharedPreferences("MyPref", MODE_PRIVATE)
 //        val email = sharedPref.getString("email", "")
@@ -138,13 +163,14 @@ class MainActivity : AppCompatActivity() {
 //                .show()
 //    }
 
-
-    private fun saveSharedPref(token:String) {
+    private fun saveSharedPref(token: String) {
         val username = etEmail.text.toString()
         val password = etPassword.text.toString()
 //        Log.d("token", "onBindViewHolder: " + token)
-        val sharedPref = getSharedPreferences("LoginPref",
-            MODE_PRIVATE)
+        val sharedPref = getSharedPreferences(
+            "LoginPref",
+            MODE_PRIVATE
+        )
         val editor = sharedPref.edit()
         editor.putString("username", username)
         editor.putString("password", password)
@@ -153,4 +179,24 @@ class MainActivity : AppCompatActivity() {
         editor.commit()
     }
 
+    private fun checkSensor(): Boolean {
+        var flag = true
+        if (sensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY) == null) {
+            flag = false
+        }
+        return flag
+    }
+
+    override fun onSensorChanged(event: SensorEvent?) {
+        val values = event!!.values[0]
+
+        if (values < 3) {
+            btnLogin.setBackgroundColor(Color.BLACK)
+        } else if (values > 3) {
+            btnLogin.setBackgroundColor(Color.BLUE)
+        }
+    }
+
+    override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
+    }
 }

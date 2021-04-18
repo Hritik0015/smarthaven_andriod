@@ -6,6 +6,8 @@ import android.support.wearable.activity.WearableActivity
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.prakash.wearables.api.ServiceBuilder
+import com.prakash.wearables.repository.UserRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -35,7 +37,7 @@ class LoginActivity : WearableActivity() {
         val password = etPassword.text.toString()
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                val repository = UserRepository()
+                val repository =  UserRepository()
                 val response = repository.checkUser(email, password)
                 var a = response.success
 //                Log.d("response","$a")
@@ -44,16 +46,16 @@ class LoginActivity : WearableActivity() {
                         // dashboard khola
                         ServiceBuilder.token = "Bearer ${response.token}"
                         saveSharedPref(response.token!!)
-                        val name = response.userData!!.user_username
-                        val email = response.userData.user_email
-                        val contactno = response.userData.user_contactno
-                        val sharedPref = getSharedPreferences("UserDetails", MODE_PRIVATE)
-                        val editor = sharedPref.edit()
-                        editor.putString("name", name)
-                        editor.putString("email", email)
-                        editor.putString("contactno", contactno)
-                        editor.apply()
-                        editor.commit()
+//                        val name = response.userData!!.user_username
+//                        val email = response.userData.user_email
+//                        val contactno = response.userData.user_contactno
+//                        val sharedPref = getSharedPreferences("UserDetails", MODE_PRIVATE)
+//                        val editor = sharedPref.edit()
+//                        editor.putString("name", name)
+//                        editor.putString("email", email)
+//                        editor.putString("contactno", contactno)
+//                        editor.apply()
+//                        editor.commit()
                         startActivity(
                                 Intent(
                                         this@LoginActivity,

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".FavoriteActivity"
     android:orientation="vertical"
-    android:background="#465FE1">
+    android:background="#FFA500">
 
     <TextView
         android:id="@+id/tvtitle"

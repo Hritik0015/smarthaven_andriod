@@ -7,7 +7,7 @@
     tools:context=".ProfileActivity"
     android:orientation="vertical"
     android:layout_gravity="center"
-    android:background="#465FE1">
+    android:background="#FFA500">
 
     <TextView
         android:id="@+id/tvtitle"
@@ -49,17 +49,5 @@
         android:layout_marginTop="5dp"
         android:layout_gravity="center_horizontal"
         />
-
-    <Button
-        android:id="@+id/btnUpdateLink"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="50dp"
-        android:text="Update Profile"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:backgroundTint="#888888" />
 
 </LinearLayout>

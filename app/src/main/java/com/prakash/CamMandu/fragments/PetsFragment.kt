@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
+import com.prakash.CamMandu.R
 
 
 class PetsFragment : Fragment() {
@@ -19,7 +20,7 @@ class PetsFragment : Fragment() {
             savedInstanceState: Bundle?
 
     ): View? {
-
+        val view = inflater.inflate(R.layout.activity_home, container, false)
 
 
 

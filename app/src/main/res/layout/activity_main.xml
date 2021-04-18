@@ -94,7 +94,7 @@
         android:layout_height="40dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="60dp"
-        android:text="Dont have an account?"
+        android:text="For new User"
         android:textColor="@color/black"
         android:textSize="20sp" />
 
@@ -107,7 +107,7 @@
         android:layout_marginRight="10dp"
         android:layout_marginBottom="20dp"
         android:clickable="true"
-        android:text="Register new user"
+        android:text="Register here"
         android:textColor="@color/purple_700"
         android:textSize="25sp" />
 

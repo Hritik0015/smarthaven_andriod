@@ -6,4 +6,4 @@
     android:layout_height="match_parent"
     tools:context=".fragments.PetsFragment"
     android:orientation="vertical"
-    android:background="#465FE1"/>
+    android:background="#FFA500"/>
