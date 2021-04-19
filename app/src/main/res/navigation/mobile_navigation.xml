@@ -7,31 +7,31 @@
 
     <fragment
         android:id="@+id/navigation_pets"
-        android:name="com.prakash.CamMandu.fragments.PetsFragment"
+        android:name="com.Hritik.SmartHeaven.fragments.PetsFragment"
         android:label="Pets"
         tools:layout="@layout/fragment_shops" />
 
     <fragment
         android:id="@+id/navigation_products"
-        android:name="com.prakash.CamMandu.fragments.ProductsFragment"
+        android:name="com.Hritik.SmartHeaven.fragments.ProductsFragment"
         android:label="Products"
         tools:layout="@layout/fragment_products" />
 
     <fragment
         android:id="@+id/navigation_articles"
-        android:name="com.prakash.CamMandu.fragments.ArticlesFragment"
+        android:name="com.Hritik.SmartHeaven.fragments.ArticlesFragment"
         android:label="Articles"
         tools:layout="@layout/fragment_articles" />
 
     <fragment
         android:id="@+id/navigation_shelter"
-        android:name="com.prakash.CamMandu.fragments.MapsFragment"
+        android:name="com.Hritik.SmartHeaven.fragments.MapsFragment"
         android:label="Shelters"
         tools:layout="@layout/fragment_maps" />
 
     <fragment
         android:id="@+id/navigation_more"
-        android:name="com.prakash.CamMandu.fragments.MoreFragment"
+        android:name="com.Hritik.SmartHeaven.fragments.MoreFragment"
         android:label="More"
         tools:layout="@layout/fragment_more" />
 </navigation>
