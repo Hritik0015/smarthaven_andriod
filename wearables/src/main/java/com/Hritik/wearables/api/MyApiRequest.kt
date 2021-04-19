@@ -1,4 +1,4 @@
-package com.prakash.wearables.api
+package com.Hritik.wearables.api
 
 import org.json.JSONException
 import org.json.JSONObject

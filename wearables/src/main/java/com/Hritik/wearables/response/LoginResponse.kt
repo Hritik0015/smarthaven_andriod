@@ -1,6 +1,6 @@
-package com.prakash.wearables.response
+package com.Hritik.wearables.response
 
-import com.prakash.wearables.entity.User
+import com.Hritik.wearables.entity.User
 
 data class LoginResponse(
     val success :Boolean? = null,

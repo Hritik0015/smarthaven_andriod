@@ -1,4 +1,4 @@
-package com.prakash.wearables.entity
+package com.Hritik.wearables.entity
 
 import android.os.Parcel
 import android.os.Parcelable

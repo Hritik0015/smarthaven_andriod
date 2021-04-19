@@ -1,4 +1,4 @@
-package com.prakash.wearables.api
+package com.Hritik.wearables.api
 
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

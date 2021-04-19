@@ -1,4 +1,4 @@
-package com.prakash.wearables
+package com.Hritik.wearables
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

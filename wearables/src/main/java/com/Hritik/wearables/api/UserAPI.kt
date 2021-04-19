@@ -1,7 +1,7 @@
-package com.prakash.wearables.api
+package com.Hritik.wearables.api
 
-import com.prakash.wearables.entity.User
-import com.prakash.wearables.response.LoginResponse
+import com.Hritik.wearables.entity.User
+import com.Hritik.wearables.response.LoginResponse
 import retrofit2.Response
 import retrofit2.http.*
 

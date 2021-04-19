@@ -1,10 +1,10 @@
-package com.prakash.wearables.repository
+package com.Hritik.wearables.repository
 
-import com.prakash.wearables.api.MyApiRequest
-import com.prakash.wearables.api.ServiceBuilder
-import com.prakash.wearables.api.UserAPI
-import com.prakash.wearables.entity.User
-import com.prakash.wearables.response.LoginResponse
+import com.Hritik.wearables.api.MyApiRequest
+import com.Hritik.wearables.api.ServiceBuilder
+import com.Hritik.wearables.api.UserAPI
+import com.Hritik.wearables.entity.User
+import com.Hritik.wearables.response.LoginResponse
 
 class UserRepository : MyApiRequest() {
     private val userAPI = ServiceBuilder.buildService(UserAPI::class.java)
