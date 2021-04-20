@@ -13,7 +13,7 @@ import com.Hritik.SmartHeaven.entity.Article
 
 class ArticleAdapter (
 
-
+/*Recylewr view */
         private val context: Context,
         ): RecyclerView.Adapter<ArticleAdapter.ArticleViewHolder>(){
     var lstArticles= emptyList<Article>()
